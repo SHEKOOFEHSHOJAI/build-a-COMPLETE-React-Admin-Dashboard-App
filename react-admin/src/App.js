@@ -1,7 +1,7 @@
 import { ColorModeContext, useMode } from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import Topbar from './scens/global/Topbar';
-import Sidebar from "./scens/global/Sidebar"
+import KenarBar from "./scens/global/KenarBar"
 // import Dashboard from "./scens/dashboard"
 // import Team from "./scens/team"
 // import Invoices from "./scens/Invoices"
@@ -21,7 +21,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Sidebar/>
+          <KenarBar/>
           <main className='content'>
             <Topbar/>
             {/* <Routes>
