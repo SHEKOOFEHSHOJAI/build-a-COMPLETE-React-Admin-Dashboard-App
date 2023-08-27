@@ -16,5 +16,4 @@ export default function Topbar() {
       <IconButton sx={{display:"flex"}}></IconButton>
       </Box>
   )
-}git config --global user.name "SHEKOOFEHSHOJAI"
-git config --global user.email shekoofehshojai.78@gmail.com
+}
