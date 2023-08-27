@@ -2,7 +2,7 @@ import { createContext, useState, useMemo } from 'react';
 import { createTheme } from "@mui/material/styles";
 import { Typography } from '@mui/material';
 
-// tailwind shades
+// tailwind shades extation
 // ctrl k +ctrl g
 // color design tokens
 export const tokens = (mode) => ({
@@ -63,7 +63,8 @@ export const tokens = (mode) => ({
                 800: "#2a2d64",
                 900: "#151632",
             },
-        } : {
+        }
+        : {
             grey: {
                 100: "#141414",
                 200: "#292929",
@@ -79,7 +80,7 @@ export const tokens = (mode) => ({
                 100: "#040509",
                 200: "#080b12",
                 300: "#0c101b",
-                400: "#101624",
+                400: "#f2f0f0", // manually changed
                 500: "#141b2d",
                 600: "#1F2A40",
                 700: "#727681",
@@ -129,7 +130,7 @@ export const themeSetting = (mode) => {
     return {
         palette: {
             mode: mode,
-            ...colors(mode === 'dark'
+            ...(mode === 'dark'
                 ? {
                     primary: {
                         main: colors.primary[500]
@@ -200,19 +201,17 @@ export const ColorModeContext = createContext({
 
     }
 })
-export const useMode = createContext({
-    toggleColorMode: () => {
-        const [mode, setMode] = useState('dark')
-        const colorMode = useMemo(
-            () => ({
-                toggleColorMode: () =>
-                    setMode((prev) => (prev === 'light' ? 'dark' : "light"))
-            }),
-            []
-        )
+export const useMode = () => {
+    const [mode, setMode] = useState('dark')
+    const colorMode = useMemo(
+        () => ({
+            toggleColorMode: () =>
+                setMode((prev) => (prev === 'light' ? 'dark' : "light"))
+        }),
+        []
+    )
 
-        const theme = useMemo(() => createTheme(themeSetting(mode)), [mode])
-        return [theme,colorMode]
-    }
+    const theme = useMemo(() => createTheme(themeSetting(mode)), [mode])
+    return [theme, colorMode];
 }
-)
+
