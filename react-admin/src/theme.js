@@ -189,7 +189,7 @@ export const themeSetting = (mode) => {
             },
             h6: {
                 fontFamily: ["sans-serif"].join(","),
-                fontSize: 14,
+                fontSize: 8,
             },
         }
     }
