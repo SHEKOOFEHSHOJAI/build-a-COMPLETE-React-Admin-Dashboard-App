@@ -1,6 +1,7 @@
 import { createContext, useState, useMemo } from 'react';
 import { createTheme } from "@mui/material/styles";
 import { Typography } from '@mui/material';
+import { Sidebar } from 'react-pro-sidebar';
 
 // tailwind shades extation
 // ctrl k +ctrl g
@@ -191,6 +192,9 @@ export const themeSetting = (mode) => {
                 fontFamily: ["sans-serif"].join(","),
                 fontSize: 8,
             },
+        },
+        Sidebar:{
+            background:"#363967",
         }
     }
 }
