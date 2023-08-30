@@ -7,12 +7,12 @@ import Team from "./scens/team"
 import Invoices from "./scens/invoices"
 import Contacts from "./scens/contacts/"
 import Form from "./scens/form"
+import Calendar from "./scens/calendar"
 // import Bar from "./scens/bar"
 // import Line from "./scens/bar"
 // import Pie from "./scens/pie"
 // import FAQ from "./scens/faq"
 // import Geography from "./scens/geography"
-// import Calendar from "./scens/geography"
 import {Routes,Route} from "react-router-dom"
 
 function App() {
@@ -32,11 +32,12 @@ function App() {
                 <Route path="/contacts" element={<Contacts/>}/>
                <Route path="/invoices" element={<Invoices/>}/>
                  <Route path="/form" element={<Form/>}/>
+                 <Route path="/calendar" element={<Calendar/>}/>
                 {/* <Route path="/pie" element={<Pie/>}/>
                 <Route path="/line" element={<Line/>}/>
                 <Route path="/faq" element={<FAQ/>}/>
                 <Route path="/geography" element={<Geography/>}/>
-                <Route path="/calendar" element={<Calendar/>}/> */}
+                 */}
             </Routes>
           </main>
         </div>
