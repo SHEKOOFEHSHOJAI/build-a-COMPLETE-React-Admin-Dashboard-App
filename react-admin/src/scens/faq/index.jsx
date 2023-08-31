@@ -45,7 +45,7 @@ export default function FAQ() {
             <Accordion defaultExpanded>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography color={colors.greenAccent[500]} variant="h5">
-                    Some Random Question
+                        Some Random Question
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
