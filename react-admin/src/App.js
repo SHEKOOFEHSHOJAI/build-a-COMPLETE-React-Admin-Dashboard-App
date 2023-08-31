@@ -12,8 +12,7 @@ import FAQ from "./scens/faq"
 import Bar from "./scens/bar"
 import Pie from "./scens/Pie"
 import Line from "./scens/line"
-
-// import Geography from "./scens/geography"
+import Geography from "./scens/geography"
 import { Routes, Route } from "react-router-dom"
 
 function App() {
@@ -38,8 +37,8 @@ function App() {
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line/>}/>
-                {/*<Route path="/geography" element={<Geography/>}/>
-                 */}
+              <Route path="/geography" element={<Geography/>}/>
+                
             </Routes>
           </main>
         </div>
