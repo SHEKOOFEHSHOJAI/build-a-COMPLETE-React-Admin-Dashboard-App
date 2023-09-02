@@ -1,6 +1,4 @@
 import { Box, useTheme, Button, Typography, IconButton } from '@mui/material'
-import { Menu, MenuItem, Sidebar } from 'react-pro-sidebar'
-import { Link } from 'react-router-dom'
 import { mockTransactions } from "../../data/mockData"
 import { DownloadOutlined, Traffic, Email, PointOfSale, PersonAdd } from "@mui/icons-material"
 import LineChart from "../../components/LineChart"
@@ -19,7 +17,7 @@ export default function Dashboard() {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Geography Chart" subtitle="Simple Geography Chart" />
+        <Header title="DASHBOARD" subtitle="Welcome to Dashboard" />
 
         <Box>
           <Button
@@ -165,9 +163,10 @@ export default function Dashboard() {
           </Box>
           {/* charts */}
           <Box height="250px" m="-29px 0 0 0">
-            <LineChart isDashboard={true} />
+            <LineChart  />
           </Box>
         </Box>
+        {/* right section */}
         {/* tranceAction */}
         <Box gridColumn="span 4" gridRow="span 2" backgroundColor={colors.primary[400]} overflow="auto">
 
