@@ -76,9 +76,26 @@ export default function Invoices() {
               "& .MuiCheckbox-root": {
                 color: `${colors.greenAccent[200]} !important`,
               },
+              [theme.breakpoints.down("md")]: {
+                width: "100%",
+              },
+              [theme.breakpoints.only("xs")]: {
+                width:"30rem"
+              }
             }}
           >
-            <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
+            <DataGrid
+            sx={{
+              [theme.breakpoints.down("md")]: {
+                  fontSize:"10px",
+                 
+                },
+              [theme.breakpoints.down("sm")]: {
+                fontSize:"7px",
+               
+              }, 
+              }}
+            checkboxSelection rows={mockDataInvoices} columns={columns} />
           </Box>
         </Box>
       );

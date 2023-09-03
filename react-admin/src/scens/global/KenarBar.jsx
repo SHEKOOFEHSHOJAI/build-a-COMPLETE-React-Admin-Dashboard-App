@@ -9,14 +9,26 @@ import { MapOutlined, FaqTodayOutlined, HomeOutlined, PersonOutline, MenuOutline
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[100] }}
+      style={{ background:isHovering ? '#4cceac' : colors.primary[400],borderRadius:isHovering&&"10px",width:isHovering&&"90%"}}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => setSelected(title)}
       icon={icon}>
       {/* <Typography>{title}</Typography> */}
-      <Link to={to} style={{textDecoration: 'none',color:"black"}}>{title}</Link>
+      <Link to={to} style={{textDecoration: 'none', color: theme.palette.mode === "dark" ? "white" : "black",}}>{title}</Link>
+      {/* <Link>{title}</Link> */}
     </MenuItem>
   )
 }
@@ -30,6 +42,11 @@ export default function KenarBar() {
   return (
     <Box
       sx={{
+        // background: "#000000",
+        "& .ps-sidebar-container":{
+          height:"96vh !important",
+          background: `${colors.primary[400]} !important`,
+        },
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
@@ -47,7 +64,7 @@ export default function KenarBar() {
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed}>
+      <Sidebar collapsed={isCollapsed} sx={{background: "#040509",height:"100%"}}  >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem

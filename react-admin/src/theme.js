@@ -146,7 +146,16 @@ export const themeSetting = (mode) => {
                     },
                     background: {
                         default: colors.primary[500]
-                    }
+                    },
+                    components: {
+                    MuiLink: {
+                        root:{
+
+                            color:"white"
+                        },
+                      },
+                    },
+
                 } : {
                     primary: {
                         main: colors.primary[100]
@@ -192,6 +201,7 @@ export const themeSetting = (mode) => {
                 fontFamily: ["sans-serif"].join(","),
                 fontSize: 8,
             },
+            
         },
         Sidebar:{
             background:"#363967",

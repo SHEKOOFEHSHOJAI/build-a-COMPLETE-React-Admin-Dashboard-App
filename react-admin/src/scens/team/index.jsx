@@ -40,11 +40,12 @@ const Team = () => {
       renderCell: ({ row: { access } }) => {
         return (
           <Box
-            width="60%"
+            width="40rem"
             m="0 auto"
             p="5px"
             display="flex"
             justifyContent="center"
+            alignItems="center"
             backgroundColor={
               access === "admin"
                 ? colors.greenAccent[600]
@@ -54,10 +55,18 @@ const Team = () => {
             }
             borderRadius="4px"
           >
-            {access === "admin" && <AdminPanelSettingsOutlined />}
-            {access === "manager" && <SecurityOutlined />}
-            {access === "user" && <LockOpenOutlined />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            {access === "admin" && <AdminPanelSettingsOutlined sx={{ [theme.breakpoints.down("sm")]: { width:"10px",}}} />}
+            {access === "manager" && <SecurityOutlined sx={{ [theme.breakpoints.down("sm")]: { width:"10px",}}}  />}
+            {access === "user" && <LockOpenOutlined sx={{ [theme.breakpoints.down("sm")]: { width:"10px",}}} />}
+            <Typography 
+            sx={{
+               ml: "5px", 
+               [theme.breakpoints.down("sm")]: {
+                fontSize:"10px",
+               
+              },
+               
+               }} color={colors.grey[100]} >
               {access}
             </Typography>
           </Box>
@@ -96,9 +105,28 @@ const Team = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          // width:"100%",
+          
+          [theme.breakpoints.down("md")]: {
+            width: "100%",
+          },
+          [theme.breakpoints.down("sm")]: {
+            width: "20rem",
+          },
+          [theme.breakpoints.only("xs")]: {
+            width: "30rem",
+          },
+          
         }}
+
       >
-        <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+        <DataGrid sx={{
+          [theme.breakpoints.down("sm")]: {
+            fontSize:"7px",
+           
+          },
+          
+          }} checkboxSelection rows={mockDataTeam} columns={columns} />
       </Box>
     </Box>
   );

@@ -93,10 +93,27 @@ export default function Contacts() {
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
                         color: `${colors.grey[100]} !important`,
                     },
-
+                    [theme.breakpoints.down("md")]: {
+                        width: "90%",
+                      },
+                      [theme.breakpoints.down("sm")]: {
+                        width: "30rem",
+                      },
+                      
+                   
                 }}
             >
                 <DataGrid
+                 sx={{
+                    [theme.breakpoints.down("md")]: {
+                        fontSize:"10px",
+                       
+                      },
+                    [theme.breakpoints.down("sm")]: {
+                      fontSize:"7px",
+                     
+                    }, 
+                    }}
                     rows={mockDataContacts}
                     columns={columns}
                     components={{ Toolbar: GridToolbar }}
