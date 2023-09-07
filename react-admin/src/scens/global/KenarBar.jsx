@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist";
-import { Box, IconButton, Typography, colors, useTheme } from "@mui/material"
+import { Box, IconButton, Typography, colors, useMediaQuery, useTheme } from "@mui/material"
 import { Link } from "react-router-dom"
 import { tokens } from '../../theme'
-import { MapOutlined, FaqTodayOutlined, HomeOutlined, PersonOutline, MenuOutlined, TimelineOutlined, PieChartOutline, BarChartOutlined, HelpOutline, PeopleOutline, ContactsOutlined, ReceiptOutlined, PersonOutlined, CalendarTodayOutlined } from "@mui/icons-material";
+import { MapOutlined, FaqTodayOutlined, HomeOutlined, PersonOutline, MenuOutlined, TimelineOutlined, PieChartOutline, BarChartOutlined, HelpOutline, PeopleOutline, ContactsOutlined, ReceiptOutlined, PersonOutlined, CalendarTodayOutlined, Translate, Image } from "@mui/icons-material";
+import { data } from "../../data/mockDataSidebar";
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+
+
+const Item = ({ title, to, icon, key, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isHovering, setIsHovering] = useState(false);
-
   const handleMouseEnter = () => {
     setIsHovering(true);
   };
@@ -20,15 +22,19 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   };
   return (
     <MenuItem
+      key={key}
       active={selected === title}
-      style={{ background:isHovering ? '#4cceac' : colors.primary[400],borderRadius:isHovering&&"10px",width:isHovering&&"90%"}}
+      style={{ background: isHovering ? '#4cceac' : colors.primary[400], borderRadius: isHovering && "10px", width: isHovering && "90%" }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => setSelected(title)}
-      icon={icon}>
-      {/* <Typography>{title}</Typography> */}
-      <Link to={to} style={{textDecoration: 'none', color: theme.palette.mode === "dark" ? "white" : "black",}}>{title}</Link>
-      {/* <Link>{title}</Link> */}
+    >
+      <Link to={to} style={{ textDecoration: 'none', color: theme.palette.mode === "dark" ? "white" : "black", display: "flex", alignItems: "center", fontSize: "16px" }}>
+        <Typography sx={{ paddingRight: "18px" }}>
+          {icon}
+        </Typography>
+        {title}
+      </Link>
     </MenuItem>
   )
 }
@@ -37,39 +43,27 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 export default function KenarBar() {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(true)
   const [selected, setSelected] = useState("Dashboard")
+  const isMdSize = useMediaQuery('(min-width: 0px) and (max-width: 991.98px)');
+
   return (
     <Box
       sx={{
-        // background: "#000000",
-        "& .ps-sidebar-container":{
-          height:"96vh !important",
+        "& .ps-sidebar-container": {
+          height: "96vh !important",
           background: `${colors.primary[400]} !important`,
-        },
-        "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
-        },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
-        "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
-        },
-        "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          transition: ".9s all",
+          transform: 'translate(9,8), scale(1)',
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed} sx={{background: "#040509",height:"100%"}}  >
+      <Sidebar collapsed={isCollapsed} sx={{ background: "#040509", height: "100%" }}  >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlined /> : undefined}
+            onClick={() => setIsCollapsed(isMdSize ? isCollapsed : !isCollapsed)}
+            icon={isCollapsed ? <MenuOutlined sx={{ marginRight: "11px" }} /> : undefined}
             style={{
               margin: "0px 0 0px 0",
               color: colors.grey[100],
@@ -95,8 +89,12 @@ export default function KenarBar() {
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
-                <PersonOutline
-                  style={{ cursor: "pointer", borderRadius: "50%", height: "100px", width: "100px", background: "grey" }}
+                <img
+                  alt=""
+                  src="../../../public/img/images.png"
+                  width="100"
+                  height="100"
+                  style={{ transition: ".9s all", transform: 'translate(9,8), scale(1)', cursor: "pointer", borderRadius: "50%", height: "100px", width: "100px", background: "grey", marginTop: "12px" }}
                 />
               </Box>
               <Box textAlign="center">
@@ -107,103 +105,34 @@ export default function KenarBar() {
           )}
           {/* menuItems */}
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Item
-              title="Dashboard"
-              to="/"
-              icon={<HomeOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Typography
-              variant='h8'
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}>
-              Data
-            </Typography>
-            <Item
-              title="Manage Team"
-              to="/team" 
-              icon={<PeopleOutline />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            
-             
-            <Item
-              title="Contact Information"
-              to="/contacts"
-              icon={<ContactsOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Typography
-              variant='h8'
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}>
-              Pages
-            </Typography>
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Profile Form"
-              to="/Form"
-              icon={<PersonOutline />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="FaQ page"
-              to="/faq"
-              icon={<HelpOutline />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-             <Typography 
-            variant='h8' 
-            color={colors.grey[300]} 
-            sx={{m:"15px 0 5px 20px"}}>
-              Charts
-              </Typography>
-            <Item
-              title="Bar Chat "
-              to="/bar"
-              icon={<BarChartOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Pie Chart "
-              to="/pie"
-              icon={<PieChartOutline />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Line Chart "
-              to="/line"
-              icon={<TimelineOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Geography Chart "
-              to="/geography"
-              icon={<MapOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {data && data.map((data1, i) => {
+              return (
+                <>
+                  <Item
+                    key={data1.id}
+                    // id={i}
+                    title={data1.title}
+                    to={data1.to}
+                    icon={
+                      data1.title === "Dashboard" ? <HomeOutlined />
+                        : data1.title === "Manage Team" ? <PeopleOutline />
+                          : data1.title === "Contact Information" ? <ContactsOutlined />
+                            : data1.title === "Invoices Balances" ? <ReceiptOutlined />
+                              : data1.title === "Profile Form" ? <PersonOutline />
+                                : data1.title === "Calendar" ? <CalendarTodayOutlined />
+                                  : data1.title === "FaQ page" ? <HelpOutline />
+                                    : data1.title === "Bar Chat" ? <BarChartOutlined />
+                                      : data1.title === "Pie Chart" ? <PieChartOutline />
+                                        : data1.title === "Line Chart" ? <TimelineOutlined />
+                                          : data1.title === "Geography Chart" ? <MapOutlined />
+                                            : ""
+                    }
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                </>
+              )
+            })}
           </Box>
         </Menu>
       </Sidebar>

@@ -13,7 +13,15 @@ export default function Topbar() {
     <Box display="flex" justifyContent="space-between"   p={2}>
       
       <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="3px">
-        <InputBase sx={{ mr: 1, flex: 1 }} placeholder="Search"></InputBase>
+        <InputBase sx={{
+          //  [theme.breakpoints.down("md")]: {
+          //   width: "100%"
+          //  },
+           [theme.breakpoints.down("xs")]: {
+            width:"20rem",
+           },
+           
+           }} placeholder="Search"></InputBase>
         <IconButton sx={{ p: 1 }} type="button" >
           <Search />
         </IconButton>
