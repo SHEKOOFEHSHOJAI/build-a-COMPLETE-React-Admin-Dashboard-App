@@ -12,15 +12,15 @@ export default function Bar() {
         width: "90%"
     },
       [theme.breakpoints.down("md")]: {
-        width: "100%"
+        width: "33rem"
     },
     [theme.breakpoints.only("xs")]: {
-        width: "25rem"
+        width: "16rem"
     }
     }}
     >
     <Header title="Bar Chart" subtitle="Simple Bar Chart" />
-    <Box height="75vh">
+    <Box height="75vh" >
       <BarChart />
     </Box>
   </Box>

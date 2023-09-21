@@ -11,7 +11,23 @@ export default function RightBarDashborad() {
         <>
 
             {/* tranceAction */}
-            <Box gridColumn="span 4" gridRow="span 2" backgroundColor={colors.primary[400]} overflow="auto">
+            <Box 
+            sx={{
+
+                gridColumn:"span 4",
+                 gridRow:"span 2" ,
+                 backgroundColor:colors.primary[400],
+                  overflow:"auto",
+                  [theme.breakpoints.down("md")]: {
+                    gridColumn:"span 12",
+                    background:"red"
+                },
+                [theme.breakpoints.only("xs")]: {
+                    gridColumn:"span 12",
+                    background:"blue"
+                }
+            }}
+            >
 
                 <Box
                     display="flex"
@@ -39,19 +55,46 @@ export default function RightBarDashborad() {
                                 color={colors.greenAccent[500]}
                                 variant="h5"
                                 fontWeight="600"
+                                sx={{
+                                    [theme.breakpoints.only("xs")]: {
+                                     fontSize:"16px"
+                                    } 
+                                }}
                             >
                                 {transaction.txId}
                             </Typography>
-                            <Typography color={colors.grey[100]}>
+                            <Typography color={colors.grey[100]} sx={{
+                                 [theme.breakpoints.only("xs")]: {
+                                    fontSize:"15px"
+                                }
+                            }}>
                                 {transaction.user}
                             </Typography>
                         </Box>
                         {/* date */}
-                        <Box color={colors.grey[100]}>{transaction.date}</Box>
+                        <Box 
+                        sx={{ 
+                            color:colors.grey[100],
+                            [theme.breakpoints.only("xs")]: {
+                            fontSize:"15px",
+                           
+                          }}}
+                        >{transaction.date}</Box>
                         <Box
-                            backgroundColor={colors.greenAccent[500]}
-                            p="5px 10px"
-                            borderRadius="4px"
+                         sx={{
+                             backgroundColor:colors.greenAccent[500],
+                             p:"5px 10px",
+                             borderRadius:"4px",
+                             [theme.breakpoints.down("md")]: {
+                                fontSize:"15px",
+                                color:"red",
+                                p:"2px 5px",
+                             },
+                             [theme.breakpoints.only("xs")]: {
+                               fontSize:"15px",
+                               p:"2px 3px",
+                             }
+                         }}
                         >
                             ${transaction.cost}
                         </Box>

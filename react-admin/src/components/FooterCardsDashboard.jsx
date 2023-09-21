@@ -12,12 +12,33 @@ export default function FooterCardsDashboard({ title, subtitle1, subtitle2, isPr
     return (
         <>
             <Box
-                gridColumn="span 4"
-                gridRow="span 2"
-                backgroundColor={colors.primary[400]}
-                p="30px"
+                sx={{
+                    gridColumn: "span 4",
+                    gridRow: "span 2",
+                    backgroundColor: colors.primary[400],
+                    padding: "30px",
+                    [theme.breakpoints.down("md")]: {
+                        gridColumn: "span 6",
+                        background: "red"
+                    },
+                    [theme.breakpoints.only("xs")]: {
+                        gridColumn: "span 12",
+                        background: "blue"
+                    }
+                }}
             >
-                <Typography variant="h5" fontWeight="600">
+                <Typography
+                    sx={{
+                        fontWeight: "600",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "15px"
+                        },
+                        [theme.breakpoints.only("xs")]: {
+                            fontSize: "15px"
+                        }
+                    }}
+                    variant="h5"
+                >
                     {title}
                 </Typography>
                 <Box
@@ -25,10 +46,14 @@ export default function FooterCardsDashboard({ title, subtitle1, subtitle2, isPr
                     flexDirection="column"
                     alignItems="center"
                     mt="25px"
+                    justifyContent="center"
                     height="200px"
+                    // width="14rem"
+                    // ml="-20px"
+                    // overflow="Hidden"
                 >
                     {
-                        isProgress ? <ProgressCircle size="125" />
+                        isProgress ? <ProgressCircle size="6" />
                             : isGeographyChart ? <GeographyChart />
                                 : isBarCharts ? <BarCharts />
                                     : ""
@@ -38,7 +63,13 @@ export default function FooterCardsDashboard({ title, subtitle1, subtitle2, isPr
                             <Typography
                                 variant="h5"
                                 color={colors.greenAccent[500]}
-                                sx={{ mt: "15px" }}
+
+                                sx={{
+                                    mt: "15px",
+                                    [theme.breakpoints.only("xs")]: {
+                                        fontSize: "20px"
+                                    }
+                                }}
                             >
                                 $48,352 revenue generated
                             </Typography>
@@ -46,7 +77,11 @@ export default function FooterCardsDashboard({ title, subtitle1, subtitle2, isPr
                     </>
                     <>
                         {subtitle2 &&
-                            <Typography>Includes extra misc expenditures and costs</Typography>
+                            <Typography sx={{
+                                [theme.breakpoints.only("xs")]: {
+                                    fontSize: "15px"
+                                }
+                            }}>Includes extra misc expenditures and costs</Typography>
                         }
                     </>
                 </Box>

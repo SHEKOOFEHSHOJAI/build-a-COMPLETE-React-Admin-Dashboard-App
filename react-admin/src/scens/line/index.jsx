@@ -16,7 +16,11 @@ export default function LINE() {
           width:"40rem"
         },
         [theme.breakpoints.only("xs")]: {
-          width:"30rem"
+          width:"16rem",
+          height:"26rem",
+          marginLeft:"-15px",
+          marginTop:'8rem'
+          
         }
         }} >
         <LineChart />

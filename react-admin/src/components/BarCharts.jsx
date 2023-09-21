@@ -37,7 +37,9 @@ const BarChart = ({ isDashboard = false }) => {
           text: {
             fill: colors.grey[100],
           },
+          
         },
+       
       }}
       keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
       indexBy="country"

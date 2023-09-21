@@ -16,12 +16,23 @@ export default function DashboardCards() {
                     return (
 
                         <Box
-                            gridColumn="span 3"
-                            backgroundColor={colors.primary[400]}
-                            display="flex"
-                            alignItems="center"
-                            justifyContent="center"
-                            background="red"
+                        sx={{
+
+                            gridColumn:"span 3",
+                            backgroundColor:colors.primary[400],
+                            display:"flex",
+                            alignItems:"center",
+                            justifyContent:"center",
+                            background:"red",
+                            [theme.breakpoints.down("md")]: {
+                                gridColumn:"span 6",
+                                background:"red"
+                            },
+                            [theme.breakpoints.only("xs")]: {
+                                gridColumn:"span 12",
+                                background:"blue"
+                            }
+                        }}
                         >
                             <StateBox
                                 title={data1.title}

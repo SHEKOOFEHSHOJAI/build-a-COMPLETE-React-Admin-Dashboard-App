@@ -30,7 +30,7 @@ const Item = ({ title, to, icon, key, selected, setSelected }) => {
       onClick={() => setSelected(title)}
     >
       <Link to={to} style={{ textDecoration: 'none', color: theme.palette.mode === "dark" ? "white" : "black", display: "flex", alignItems: "center", fontSize: "16px" }}>
-        <Typography sx={{ paddingRight: "18px" }}>
+        <Typography sx={{ paddingRight: "15px" }}>
           {icon}
         </Typography>
         {title}
@@ -55,6 +55,18 @@ export default function KenarBar() {
           background: `${colors.primary[400]} !important`,
           transition: ".9s all",
           transform: 'translate(9,8), scale(1)',
+          position: "fixed",
+          top:"0px",
+          width:isCollapsed?"4.5rem":"15rem",
+          [theme.breakpoints.down("md")]: {
+            // display:"grid",
+            // gridColumn:"span 12",
+            // background:"red"
+          },
+        // [theme.breakpoints.only("xs")]: {
+        //     gridColumn:"span 12",
+        //     background:"blue"
+        // }
         },
       }}
     >

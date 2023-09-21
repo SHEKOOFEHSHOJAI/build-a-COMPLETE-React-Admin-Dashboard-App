@@ -203,8 +203,19 @@ export const themeSetting = (mode) => {
             },
             
         },
-        Sidebar:{
-            background:"#363967",
+        components: {
+            MuiPickersBasePicker: {
+              styleOverrides: {
+                root: {
+                  '& .MuiPickersCalendarHeader-switchHeader': {
+                    backgroundColor: 'red',
+                  },
+                  '& .fc-button':{
+                    backgroundColor: 'red',
+                  }
+                },
+              },
+            },
         }
     }
 }
