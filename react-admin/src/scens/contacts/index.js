@@ -94,10 +94,12 @@ export default function Contacts() {
                         color: `${colors.grey[100]} !important`,
                     },
                     [theme.breakpoints.down("md")]: {
-                        width: "90%",
+                        width: "96%",
                       },
                       [theme.breakpoints.down("sm")]: {
-                        width: "30rem",
+                        maxWidth:"15rem"
+                        // maxWidth:"60%"
+                        // width: "30rem",
                       },
                       
                    
@@ -105,14 +107,10 @@ export default function Contacts() {
             >
                 <DataGrid
                  sx={{
-                    [theme.breakpoints.down("md")]: {
+                     [theme.breakpoints.down("md")]: {
                         fontSize:"10px",
-                       
                       },
-                    [theme.breakpoints.down("sm")]: {
-                      fontSize:"7px",
-                     
-                    }, 
+                   
                     }}
                     rows={mockDataContacts}
                     columns={columns}

@@ -210,7 +210,7 @@ export const themeSetting = (mode) => {
                   '& .MuiPickersCalendarHeader-switchHeader': {
                     backgroundColor: 'red',
                   },
-                  '& .fc-button':{
+                  '& .fc-header-toolbar':{
                     backgroundColor: 'red',
                   }
                 },

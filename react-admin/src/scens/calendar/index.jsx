@@ -64,15 +64,17 @@ export default function Calendar() {
         {/* CALENDAR SIDEBAR */}
         <Box
           flex="1 1 20%"
-          backgroundColor={colors.primary[400]}
-          p="15px"
-          borderRadius="4px"
-          sx={{[theme.breakpoints.only("xs")]: {
-            display:"none",
-          }}}
+          sx={{
+            backgroundColor:colors.primary[400],
+            padding:"15px",
+            borderRadius:"4px",
+            [theme.breakpoints.only("xs")]: {
+              display: "none",
+            }
+          }}
         >
           <Typography variant="h5"
-          
+
           >Events</Typography>
           <List>
             {currentEvents.map((event) => (
@@ -82,16 +84,16 @@ export default function Calendar() {
                   backgroundColor: colors.greenAccent[500],
                   margin: "10px 0",
                   borderRadius: "2px",
-                  
+
                 }}
               >
                 <ListItemText
                   primary={event.title}
-                  sx={{color:"red"}}
+                  sx={{ color: "red" }}
                   secondary={
                     <Typography
                     >
-                     
+
                       {formatDate(event.start, {
                         year: "numeric",
                         month: "short",
@@ -106,14 +108,50 @@ export default function Calendar() {
         </Box>
 
         {/* CALENDAR */}
-        <Box flex="1 1 100%" ml="15px" width="10px"sx={{
-            "& div> .fc-button &.fc-prev-button":{
-              backgroundColor:"red"
+        <Box flex="1 1 100%" ml="15px" width="10px" sx={{
+          '& .fc-header-toolbar': {
+            width: "100%",
+            [theme.breakpoints.down("md")]: {
+              fontSize: "17px",
+            },
+            [theme.breakpoints.only("xs")]: {
+              fontSize: "10px",
             }
-          }}>
-          <FullCalendar   
-              
-               height="75vh"
+
+          },
+          "& .fc-toolbar-title": {
+            [theme.breakpoints.down("md")]: {
+              fontSize: "16px",
+            },
+            [theme.breakpoints.only("xs")]: {
+              fontSize: "10px",
+            }
+          },
+          "& .fc-today-button": {
+            [theme.breakpoints.down("md")]: {
+              display: "none"
+            },
+            [theme.breakpoints.only("xs")]: {
+              display: "none"
+            }
+          },
+          '& .fc-prev-button,& .fc-next-button': {
+            [theme.breakpoints.down("md")]: {
+              fontSize: "10px"
+            },
+            [theme.breakpoints.only("xs")]: {
+              fontSize: "5px"
+            }
+          },
+          "& .fc-col-header-cell": {
+            [theme.breakpoints.only("xs")]: {
+              fontSize: "13px"
+            }
+          }
+        }}>
+          <FullCalendar
+
+            height="75vh"
             plugins={[
               dayGridPlugin,
               timeGridPlugin,
@@ -124,7 +162,7 @@ export default function Calendar() {
               left: "prev,next today",
               center: "title",
               right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
-              
+
             }}
             initialView="dayGridMonth"
             editable={true}

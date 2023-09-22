@@ -80,7 +80,7 @@ export default function Invoices() {
                 width: "100%",
               },
               [theme.breakpoints.only("xs")]: {
-                width:"30rem"
+                maxWidth:"14rem"
               }
             }}
           >
@@ -90,10 +90,6 @@ export default function Invoices() {
                   fontSize:"10px",
                  
                 },
-              [theme.breakpoints.down("sm")]: {
-                fontSize:"7px",
-               
-              }, 
               }}
             checkboxSelection rows={mockDataInvoices} columns={columns} />
           </Box>

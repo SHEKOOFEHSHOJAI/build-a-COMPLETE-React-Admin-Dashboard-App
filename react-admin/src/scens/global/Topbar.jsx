@@ -12,16 +12,21 @@ export default function Topbar() {
   return (
     <Box display="flex" justifyContent="space-between"   p={2}>
       
-      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="3px">
-        <InputBase sx={{
-          //  [theme.breakpoints.down("md")]: {
-          //   width: "100%"
-          //  },
-           [theme.breakpoints.down("xs")]: {
-            width:"20rem",
-           },
-           
-           }} placeholder="Search"></InputBase>
+      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="3px"
+      //  sx={{
+      //   //  [theme.breakpoints.down("md")]: {
+      //   //   width: "100%"
+      //   //  },
+      //   "& .MuiBox-root":{
+      //    [theme.breakpoints.down("xs")]: {
+      //      color:"red",
+      //       width: "92px",
+      //       height:" 31px",
+      //    },
+      //   }
+      //    }}
+      >
+        <InputBase placeholder="Search"></InputBase>
         <IconButton sx={{ p: 1 }} type="button" >
           <Search />
         </IconButton>
