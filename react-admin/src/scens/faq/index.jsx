@@ -6,6 +6,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
+import { data } from "../../data/mockDataFQA";
 
 export default function FAQ() {
     const theme = useTheme();
@@ -13,137 +14,44 @@ export default function FAQ() {
     return (
         <Box m="20px">
             <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
-
-            <Accordion defaultExpanded>   
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "15px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                // width:"30rem"
-                                fontSize: "13px"
-                            }
-                        }}
-                        color={colors.greenAccent[500]} variant="h5">
-                        An Important Question
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "12px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                fontSize: "10px"
-                            }
-                        }}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-
-            <Accordion defaultExpanded>   
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "15px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                // width:"30rem"
-                                fontSize: "13px"
-                            }
-                        }}
-                        color={colors.greenAccent[500]} variant="h5">
-                        An Important Question
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "12px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                fontSize: "10px"
-                            }
-                        }}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-
-            <Accordion defaultExpanded>   
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "15px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                // width:"30rem"
-                                fontSize: "13px"
-                            }
-                        }}
-                        color={colors.greenAccent[500]} variant="h5">
-                        An Important Question
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "12px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                fontSize: "10px"
-                            }
-                        }}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion defaultExpanded>   
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "15px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                // width:"30rem"
-                                fontSize: "13px"
-                            }
-                        }}
-                        color={colors.greenAccent[500]} variant="h5">
-                        An Important Question
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    <Typography
-                        sx={{
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "12px"
-                            },
-                            [theme.breakpoints.only("xs")]: {
-                                fontSize: "10px"
-                            }
-                        }}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                        malesuada lacus ex, sit amet blandit leo lobortis eget.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
+            {
+                data?.map((data1) => {
+                    return (
+                        <>
+                            <Accordion defaultExpanded>
+                                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography
+                                        sx={{
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "15px"
+                                            },
+                                            [theme.breakpoints.only("xs")]: {
+                                                fontSize: "13px"
+                                            }
+                                        }}
+                                        color={colors.greenAccent[500]} variant="h5">
+                                        {data1.title}
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails >
+                                    <Typography
+                                        sx={{
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "12px"
+                                            },
+                                            [theme.breakpoints.only("xs")]: {
+                                                fontSize: "10px"
+                                            }
+                                        }}
+                                    >
+                                        {data1.subTitle}
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        </>
+                    )
+                })
+            }
         </Box>
     )
 

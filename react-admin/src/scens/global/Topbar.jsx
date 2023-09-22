@@ -10,23 +10,26 @@ export default function Topbar() {
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext)
   return (
-    <Box display="flex" justifyContent="space-between"   p={2}>
-      
-      <Box display="flex" backgroundColor={colors.primary[400]} borderRadius="3px"
-      //  sx={{
-      //   //  [theme.breakpoints.down("md")]: {
-      //   //   width: "100%"
-      //   //  },
-      //   "& .MuiBox-root":{
-      //    [theme.breakpoints.down("xs")]: {
-      //      color:"red",
-      //       width: "92px",
-      //       height:" 31px",
-      //    },
-      //   }
-      //    }}
+    <Box display="flex" justifyContent="space-between" alignItems="center" p={2}>
+
+      <Box
+        sx={{
+          display: "flex",
+          borderRadius: "3px",
+          backgroundColor: colors.primary[400],
+          [theme.breakpoints.only("xs")]: {
+            height: "2rem",
+            "& input": {
+              fontSize: "14px"
+            },
+            "& svg": {
+              fontSize: "18px"
+            }
+          },
+
+        }}
       >
-        <InputBase placeholder="Search"></InputBase>
+        <InputBase placeholder="Search" ></InputBase>
         <IconButton sx={{ p: 1 }} type="button" >
           <Search />
         </IconButton>

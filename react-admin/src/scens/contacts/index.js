@@ -98,8 +98,6 @@ export default function Contacts() {
                       },
                       [theme.breakpoints.down("sm")]: {
                         maxWidth:"15rem"
-                        // maxWidth:"60%"
-                        // width: "30rem",
                       },
                       
                    

@@ -1,4 +1,4 @@
-import { Box, useTheme, Button} from '@mui/material'
+import { Box, useTheme, Button } from '@mui/material'
 import { DownloadOutlined } from "@mui/icons-material"
 import Header from '../../components/Header'
 import { tokens } from '../../theme'
@@ -24,46 +24,38 @@ export default function Dashboard() {
               fontWeight: "bold",
               padding: "10px 20px",
               [theme.breakpoints.down("md")]: {
-                variant:"h8"
+                variant: "h8"
               },
               [theme.breakpoints.only("xs")]: {
-                fontSize:"8px",
+                fontSize: "8px",
                 padding: "5px 5px",
-                
+
               }
             }}
           >
-            <DownloadOutlined 
-            sx={{ mr: "10px",
-            [theme.breakpoints.down("md")]: {
-              variant:"h8"
-            },
-            [theme.breakpoints.only("xs")]: {
-              fontSize:"15px",
-              
-              
-            }
-            
-            }} />
-            Download 
+            <DownloadOutlined
+              sx={{
+                mr: "10px",
+                [theme.breakpoints.down("md")]: {
+                  variant: "h8"
+                },
+                [theme.breakpoints.only("xs")]: {
+                  fontSize: "15px",
+                }
+
+              }} />
+            Download
           </Button>
         </Box>
       </Box>
       {/* grid */}
       <Box
-      sx={{
-        display:"grid",
-        gridTemplateColumns:"repeat(12, 1fr)",
-        gridAutoRows:"140px",
-        gap:"20px",
-      //   [theme.breakpoints.down("md")]: {
-          
-      //     backgroundColor:"red"
-      // },
-      // [theme.breakpoints.only("xs")]: {
-      //   backgroundColor:"blue"
-      // }
-      }}
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(12, 1fr)",
+          gridAutoRows: "140px",
+          gap: "20px",
+        }}
       >
         {/* row 1 */}
         <DashboardCards />
