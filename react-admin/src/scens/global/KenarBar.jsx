@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist";
 import { Box, IconButton, Typography, colors, useMediaQuery, useTheme } from "@mui/material"
@@ -9,7 +9,7 @@ import { data } from "../../data/mockDataSidebar";
 
 
 
-const Item = ({ title, to, icon, key, selected, setSelected }) => {
+const Item = ({ title, to, icon, mykey, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isHovering, setIsHovering] = useState(false);
@@ -22,7 +22,7 @@ const Item = ({ title, to, icon, key, selected, setSelected }) => {
   };
   return (
     <MenuItem
-      key={key}
+      key={mykey}
       active={selected === title}
       style={{ background: isHovering ? '#4cceac' : colors.primary[400], borderRadius: isHovering && "10px", width: isHovering && "90%" }}
       onMouseEnter={handleMouseEnter}
@@ -59,14 +59,7 @@ export default function KenarBar() {
           top:"0px",
           width:isCollapsed?"4.5rem":"15rem",
           [theme.breakpoints.down("md")]: {
-            // display:"grid",
-            // gridColumn:"span 12",
-            // background:"red"
           },
-        // [theme.breakpoints.only("xs")]: {
-        //     gridColumn:"span 12",
-        //     background:"blue"
-        // }
         },
       }}
     >
@@ -119,9 +112,9 @@ export default function KenarBar() {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             {data && data.map((data1, i) => {
               return (
-                <>
+                <React.Fragment key={i}>
                   <Item
-                    key={data1.id}
+                    mykey={i}
                     // id={i}
                     title={data1.title}
                     to={data1.to}
@@ -142,7 +135,7 @@ export default function KenarBar() {
                     selected={selected}
                     setSelected={setSelected}
                   />
-                </>
+                </React.Fragment>
               )
             })}
           </Box>

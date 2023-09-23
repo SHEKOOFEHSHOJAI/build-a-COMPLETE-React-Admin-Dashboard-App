@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { tokens } from "../../theme";
 import { data } from "../../data/mockDataFQA";
+import React from "react";
 
 export default function FAQ() {
     const theme = useTheme();
@@ -15,11 +16,12 @@ export default function FAQ() {
         <Box m="20px">
             <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
             {
-                data?.map((data1) => {
+                data?.map((data1,i) => {
+                    console.log(i)
                     return (
-                        <>
-                            <Accordion defaultExpanded>
-                                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                        <React.Fragment key={data1.id}>
+                            <Accordion defaultExpanded >
+                                <AccordionSummary  expandIcon={<ExpandMoreIcon />}>
                                     <Typography
                                         sx={{
                                             [theme.breakpoints.down("md")]: {
@@ -32,7 +34,7 @@ export default function FAQ() {
                                         color={colors.greenAccent[500]} variant="h5">
                                         {data1.title}
                                     </Typography>
-                                </AccordionSummary>
+                                </AccordionSummary >
                                 <AccordionDetails >
                                     <Typography
                                         sx={{
@@ -48,7 +50,7 @@ export default function FAQ() {
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion>
-                        </>
+                        </React.Fragment>
                     )
                 })
             }

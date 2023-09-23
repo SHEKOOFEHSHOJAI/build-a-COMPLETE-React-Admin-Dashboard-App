@@ -11,11 +11,12 @@ export default function DashboardCards() {
     return (
         <>
             {
-                data?.map(data1 => {
+                data?.map((data1,i) => {
                     console.log(data1)
                     return (
 
                         <Box
+                        key={i}
                         sx={{
 
                             gridColumn:"span 3",
@@ -35,6 +36,7 @@ export default function DashboardCards() {
                         }}
                         >
                             <StateBox
+                                mykey={i}
                                 title={data1.title}
                                 subtitle={data1.subtitle}
                                 progress={data1.progress}
