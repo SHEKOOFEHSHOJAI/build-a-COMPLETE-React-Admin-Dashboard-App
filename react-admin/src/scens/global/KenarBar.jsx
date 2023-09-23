@@ -22,6 +22,7 @@ const Item = ({ title, to, icon, mykey, selected, setSelected }) => {
   };
   return (
     <MenuItem
+     component={"div"}
       key={mykey}
       active={selected === title}
       style={{ background: isHovering ? '#4cceac' : colors.primary[400], borderRadius: isHovering && "10px", width: isHovering && "90%" }}
@@ -32,8 +33,8 @@ const Item = ({ title, to, icon, mykey, selected, setSelected }) => {
       <Link to={to} style={{ textDecoration: 'none', color: theme.palette.mode === "dark" ? "white" : "black", display: "flex", alignItems: "center", fontSize: "16px" }}>
         <Typography sx={{ paddingRight: "15px" }}>
           {icon}
-        </Typography>
-        {title}
+        </Typography> 
+         {title}
       </Link>
     </MenuItem>
   )
@@ -115,7 +116,6 @@ export default function KenarBar() {
                 <React.Fragment key={i}>
                   <Item
                     mykey={i}
-                    // id={i}
                     title={data1.title}
                     to={data1.to}
                     icon={
