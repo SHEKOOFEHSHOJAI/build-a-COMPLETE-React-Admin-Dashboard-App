@@ -6,7 +6,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { tokens } from '../../theme'
-
+import { makeStyles } from "../../utils/makeStyle";
 
 import {
   Box,
@@ -18,14 +18,25 @@ import {
 } from "@mui/material";
 import Header from "../../components/Header";
 
-
+const useStyles=makeStyles((theme)=>({
+  root:{
+  backgroundColor:colors.primary[400],
+  padding:"15px",
+  borderRadius:"4px",
+  [theme.breakpoints.only("xs")]: {
+    display: "none",
+  }
+}
+}))
 export default function Calendar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { root } = useStyles();
+
   const [currentEvents, setCurrentEvents] = useState([]);
   currentEvents.map((event) => (console.log(event.start)))
 
-  console.log("hiiiiiii")
+
   const handleDateClick = (selected) => {
     const title = prompt("Please enter a new title for your event");
     //   find calendar in api
@@ -64,18 +75,13 @@ export default function Calendar() {
         {/* CALENDAR SIDEBAR */}
         <Box
           flex="1 1 20%"
-          sx={{
-            backgroundColor:colors.primary[400],
-            padding:"15px",
-            borderRadius:"4px",
-            [theme.breakpoints.only("xs")]: {
-              display: "none",
-            }
-          }}
+          sx={root
+           
+          }
         >
-          <Typography variant="h5"
-
-          >Events</Typography>
+          <Typography variant="h5">
+            Events
+          </Typography>
           <List>
             {currentEvents.map((event) => (
               <ListItem
